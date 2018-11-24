@@ -10,7 +10,7 @@ pipeline {
 
 	options{
 		skipDefaultCheckout()
-		buildDiscarder(logrotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '1', daysToKeepStr: '5', numToKeepStr: '10'))
+		buildDiscarder(logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '1', daysToKeepStr: '5', numToKeepStr: '10'))
 	}
 
 	stages{
