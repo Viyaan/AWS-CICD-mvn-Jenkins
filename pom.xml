@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.jenkins.pipeline</groupId>
-	<artifactId>ci-cd</artifactId>
+	<artifactId>jenkins-ci-cd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
