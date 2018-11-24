@@ -57,9 +57,13 @@ pipeline {
 						sh 'mvn surefire-report:report-only'
 					}
 
-					echo " Build stage completed"
+					echo " Unit Test stage completed"
+					deleteDir()
 				}
-				failure{ echo " Build stage failed" }
+				failure{
+					echo " Unit Test stage failed"
+					deleteDir()
+				}
 			}
 		}
 	}
