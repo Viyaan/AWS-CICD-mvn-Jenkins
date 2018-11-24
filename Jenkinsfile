@@ -3,7 +3,7 @@
 pipeline {
 
 
-	agent none
+	agent any
 	environment{ COMPLIANCEENABLED = true }
 
 	options{
@@ -14,9 +14,6 @@ pipeline {
 	stages{
 
 		stage('Build'){
-
-
-
 			agent{
 				docker{
 					image 'maven:3.5'
