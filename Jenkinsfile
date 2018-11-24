@@ -50,7 +50,7 @@ pipeline {
 			}
 		}
 
-		stage(Unit Test){
+		stage('Unit Test'){
 
 			steps{
 				checkout scm
@@ -78,7 +78,7 @@ pipeline {
 		}
 
 
-		stage(Documentation){
+		stage('Documentation'){
 
 			steps{
 				checkout scm
