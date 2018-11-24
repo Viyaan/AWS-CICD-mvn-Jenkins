@@ -4,9 +4,7 @@ pipeline {
 
 
 	agent none
-	environment{
-		COMPLIANCEENABLED = true
-	}
+	environment{ COMPLIANCEENABLED = true }
 
 	options{
 		skipDefaultCheckout()
@@ -16,16 +14,16 @@ pipeline {
 	stages{
 
 		stage('Build'){
-			
-			
 
-			//agent{
-				//	docker{
-				//	image 'maven:3.5'
-				//label 'dind'
-				//args '-v /root/.m2:/root/.m2'
-				//}
-			//}
+
+
+			agent{
+				docker{
+					image 'maven:3.5'
+					//label 'dind'
+					args '-v /root/.m2:/root/.m2'
+				}
+			}
 
 
 			steps{
@@ -40,15 +38,9 @@ pipeline {
 				stash includes: 'target/*.jar', name: 'artifact'
 			}
 			post {
-				always{
-					deleteDir()
-				}
-				success{
-					echo " Build stage completed"
-				}
-				failure{
-					echo " Build stage failed"
-				}
+				always{ deleteDir() }
+				success{ echo " Build stage completed" }
+				failure{ echo " Build stage failed" }
 			}
 		}
 
@@ -59,9 +51,7 @@ pipeline {
 				sh 'mvn -Dmaven.test.failure.ignore.test'
 			}
 			post {
-				always{
-					deleteDir()
-				}
+				always{ deleteDir() }
 				success{
 					script{
 
@@ -87,9 +77,7 @@ pipeline {
 				sh 'mvn -e javadoc:javadoc'
 			}
 			post {
-				always{
-					deleteDir()
-				}
+				always{ deleteDir() }
 				success{
 					script{
 
