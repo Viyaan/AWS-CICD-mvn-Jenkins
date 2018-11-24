@@ -27,7 +27,7 @@ pipeline {
 
 				checkout scm
 				script{
-					env.gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+					env.gitCommit = bat(returnStdout: true, script: 'git rev-parse HEAD').trim()
 					echo "Commit ID : ${gitCommit}"
 				}
 
