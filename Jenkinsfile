@@ -3,7 +3,7 @@
 pipeline {
 
 
-	agent any
+	agent none
 	environment{ COMPLIANCEENABLED = true }
 
 	options{
@@ -14,6 +14,9 @@ pipeline {
 	stages{
 
 		stage('Build'){
+
+
+
 			agent{
 				docker{
 					image 'maven:3.5'
@@ -26,10 +29,13 @@ pipeline {
 			steps{
 
 				checkout scm
-				
+				script{
+					env.gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+					echo "Commit ID : ${gitCommit}"
+				}
 
-				bat 'mvn -DskipTests clean install'
-				//stash includes: 'target/*.jar', name: 'artifact'
+				sh 'mvn -DskipTests clean install'
+				stash includes: 'target/*.jar', name: 'artifact'
 			}
 			post {
 				always{ deleteDir() }
