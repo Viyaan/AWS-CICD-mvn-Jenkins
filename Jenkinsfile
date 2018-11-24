@@ -29,7 +29,7 @@ pipeline {
 				
 
 				bat 'mvn -DskipTests clean install'
-				stash includes: 'target/*.jar', name: 'artifact'
+				//stash includes: 'target/*.jar', name: 'artifact'
 			}
 			post {
 				always{ deleteDir() }
