@@ -17,13 +17,13 @@ pipeline {
 
 		stage('Build'){
 
-		//	agent{
+			agent{
 			//	docker{
 				//	image 'maven:3.5'
 					//label 'dind'
 					//args '-v /root/.m2:/root/.m2'
 				//}
-			//}
+			}
 
 
 			steps{
