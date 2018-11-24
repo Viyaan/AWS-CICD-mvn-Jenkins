@@ -111,7 +111,7 @@ pipeline {
 pipeline {
 
 
-	agent none
+	//agent none
 	environment{
 		COMPLIANCEENABLED = true
 	}
