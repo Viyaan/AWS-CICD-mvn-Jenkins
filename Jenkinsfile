@@ -4,9 +4,7 @@ pipeline {
 
 
 	agent none
-	environment{
-		COMPLIANCEENABLED = true
-	}
+	environment{ COMPLIANCEENABLED = true }
 
 	options{
 		skipDefaultCheckout()
@@ -18,10 +16,10 @@ pipeline {
 		stage('Build'){
 
 			agent{
-			//	docker{
+				//	docker{
 				//	image 'maven:3.5'
-					//label 'dind'
-					//args '-v /root/.m2:/root/.m2'
+				//label 'dind'
+				//args '-v /root/.m2:/root/.m2'
 				//}
 			}
 
@@ -31,24 +29,38 @@ pipeline {
 				checkout scm
 				script{
 					env.gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-		        echo "Commit ID : ${gitCommit}"
-		        }
-		        
-		        sh 'mvn -DskipTests clean install'
-		        stash includes: 'target/*.jar', name: 'artifact'
-		        }
-				post {
-					always{
-						deleteDir()
-					}
-					success{
-						echo " Build stage completed"
-					}
-					failure{
-						echo " Build stage failed"
-					}
-					
-					}
+					echo "Commit ID : ${gitCommit}"
 				}
-}
+
+				sh 'mvn -DskipTests clean install'
+				stash includes: 'target/*.jar', name: 'artifact'
+			}
+			post {
+				always{ deleteDir() }
+				success{ echo " Build stage completed" }
+				failure{ echo " Build stage failed" }
+			}
+		}
+
+		stage(Unit Test){
+
+			steps{
+				checkout scm
+				sh 'mvn -Dmaven.test.failure.ignore.test'
+			}
+			post {
+				always{ deleteDir() }
+				success{
+					script{
+
+						echo 'STARTING SUREFIRE TEST'
+						sh 'mvn surefire-report:report-only'
+					}
+
+					echo " Build stage completed"
+				}
+				failure{ echo " Build stage failed" }
+			}
+		}
+	}
 }
