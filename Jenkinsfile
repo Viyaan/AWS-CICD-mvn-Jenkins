@@ -1,6 +1,4 @@
-def artuploadServer = Artifactor.server('devcloud')
 
-def Snapshot ='<name'>
 
 pipeline {
 
