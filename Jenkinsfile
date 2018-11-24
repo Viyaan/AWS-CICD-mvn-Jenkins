@@ -125,13 +125,7 @@ pipeline {
 
 		stage('Build'){
 				
-			//agent none{
-				//	docker{
-				//	image 'maven:3.5'
-				//label 'dind'
-				//args '-v /root/.m2:/root/.m2'
-				//}
-			//}
+			agent { docker 'maven:3-alpine' }
 
 
 			steps{
