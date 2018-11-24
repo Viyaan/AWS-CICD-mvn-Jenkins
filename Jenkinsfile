@@ -31,7 +31,7 @@ pipeline {
 					echo "Commit ID : ${gitCommit}"
 				}
 
-				sh 'mvn -DskipTests clean install'
+				 'mvn -DskipTests clean install'
 				stash includes: 'target/*.jar', name: 'artifact'
 			}
 			post {
