@@ -4,7 +4,9 @@ pipeline {
 
 
 	agent none
-	environment{ COMPLIANCEENABLED = true }
+	environment{
+		COMPLIANCEENABLED = true
+	}
 
 	options{
 		skipDefaultCheckout()
@@ -36,9 +38,15 @@ pipeline {
 				stash includes: 'target/*.jar', name: 'artifact'
 			}
 			post {
-				always{ deleteDir() }
-				success{ echo " Build stage completed" }
-				failure{ echo " Build stage failed" }
+				always{
+					deleteDir()
+				}
+				success{
+					echo " Build stage completed"
+				}
+				failure{
+					echo " Build stage failed"
+				}
 			}
 		}
 
@@ -49,7 +57,9 @@ pipeline {
 				sh 'mvn -Dmaven.test.failure.ignore.test'
 			}
 			post {
-				always{ deleteDir() }
+				always{
+					deleteDir()
+				}
 				success{
 					script{
 
@@ -66,5 +76,34 @@ pipeline {
 				}
 			}
 		}
+
+
+		stage(Documentation){
+
+			steps{
+				checkout scm
+				sh 'mvn -e javadoc:javadoc'
+			}
+			post {
+				always{
+					deleteDir()
+				}
+				success{
+					script{
+
+						step([$class: 'JavadocArchiver', javadocDir:'target/site/apidocs', keepAll:false])
+								}
+			
+								echo " Documentation stage completed"
+								deleteDir()
+							}
+							failure{
+								echo " Documentation stage failed"
+								deleteDir()
+							}
+						}
+					}
+		
+		
 	}
 }
