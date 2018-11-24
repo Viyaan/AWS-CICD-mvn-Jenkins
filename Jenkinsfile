@@ -26,10 +26,7 @@ pipeline {
 			steps{
 
 				checkout scm
-				script{
-					env.gitCommit = bat(returnStdout: true, script: 'git rev-parse HEAD').trim()
-					echo "Commit ID : ${gitCommit}"
-				}
+				
 
 				bat 'mvn -DskipTests clean install'
 				stash includes: 'target/*.jar', name: 'artifact'
