@@ -125,7 +125,7 @@ pipeline {
 
 		stage('Build'){
 				
-			agent none//{
+			//agent none{
 				//	docker{
 				//	image 'maven:3.5'
 				//label 'dind'
