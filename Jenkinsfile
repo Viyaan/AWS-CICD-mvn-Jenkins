@@ -124,22 +124,22 @@ pipeline {
 	stages{
 
 		stage('Build'){
-
-			agent{
+				
+			agent none//{
 				//	docker{
 				//	image 'maven:3.5'
 				//label 'dind'
 				//args '-v /root/.m2:/root/.m2'
 				//}
-			}
+			//}
 
 
 			steps{
 
 				checkout scm
 				script{
-					env.gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-					echo "Commit ID : ${gitCommit}"
+					//env.gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+					//echo "Commit ID : ${gitCommit}"
 				}
 
 				sh 'mvn -DskipTests clean install'
