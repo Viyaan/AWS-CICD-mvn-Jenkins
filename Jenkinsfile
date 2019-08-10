@@ -19,7 +19,7 @@ pipeline {
 				stash includes: 'target/*.jar', name: 'artifact'
 			}
 			post {
-				always{ deleteDir() }
+				
 				success{ echo " Build stage completed" }
 				failure{ echo " Build stage failed" }
 			}
