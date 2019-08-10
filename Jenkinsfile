@@ -29,7 +29,7 @@ pipeline {
 
 			steps{
 				checkout scm
-				sh 'mvn -Dmaven.test.failure.ignore.test'
+				sh 'mvn test'
 			}
 			post {
 				always{ deleteDir() }
