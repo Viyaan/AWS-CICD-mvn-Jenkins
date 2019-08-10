@@ -38,7 +38,9 @@ pipeline {
 
 						echo 'STARTING SUREFIRE TEST'
 						sh 'mvn surefire-report:report-only'
+						echo 'STARTING JACOCO TEST'
 						sh 'mvn jacoco:prepare-agent install jacoco:report'
+						echo 'Junit SUREFIRE TEST'
 						junit 'target/surefire-reports/*.xml'
 						step([$class:'JacocoPublisher'])
 					}
