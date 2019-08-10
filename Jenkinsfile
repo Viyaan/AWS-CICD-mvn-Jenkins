@@ -41,11 +41,11 @@ pipeline {
 					}
 
 					echo " Unit Test stage completed"
-					deleteDir()
+					
 				}
 				failure{
 					echo " Unit Test stage failed"
-					deleteDir()
+					
 				}
 			}
 		}
