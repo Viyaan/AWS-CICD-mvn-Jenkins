@@ -75,7 +75,7 @@ pipeline {
 			post {
 				success{
 					script{
-						step([$class: 'JavadocArchiver', javadocDir:'target/javadoc/apidocs', keepAll:false])
+						step([$class: 'JavadocArchiver', javadocDir:'target/javadpc/apidocs', keepAll:false])
 					}
 					echo " Documentation stage completed"
 				}
@@ -84,6 +84,28 @@ pipeline {
 				}
 				cleanup{
 					deleteDir()
+				}
+			}
+		}
+
+
+
+		stage('Docker'){
+
+			environment { DOCKER_CREDS =credentials('docker')}
+			steps{
+
+				sh 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
+				sh 'docker build -t primesentinel/sample-rest-api:latest'
+				sh 'docker push primesentinel/sample-rest-api:latest'
+			}
+			post {
+				success{
+
+					echo " Docker stage completed"
+				}
+				failure{
+					echo " Docker stage failed"
 				}
 			}
 		}
