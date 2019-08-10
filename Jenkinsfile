@@ -18,9 +18,11 @@ pipeline {
 				stash includes: 'target/*.jar', name: 'artifact'
 			}
 			post {
-
 				success{ echo " Build stage completed" }
 				failure{ echo " Build stage failed" }
+				always{
+					deleteDir()
+				}
 			}
 		}
 
@@ -36,12 +38,27 @@ pipeline {
 
 						echo 'STARTING SUREFIRE TEST'
 						sh 'mvn surefire-report:report-only'
+						sh 'mvn jacoco:prepare-agent install jacoco:report'
+						junit 'target/surefire-reports/*.xml'
+						step([$class:'JacocoPublisher'])
 					}
+
+					publishHTML (target: [
+						allowMissing: false,
+						alwaysLinkToLastBuild: false,
+						keepAll: true,
+						reportDir: 'target/jacoco-ut',
+						reportFiles: 'index.html',
+						reportName: "Coverage HTML Report"
+					])
 
 					echo " Unit Test stage completed"
 				}
 				failure{
 					echo " Unit Test stage failed"
+				}
+				cleanup{
+					deleteDir()
 				}
 			}
 		}
