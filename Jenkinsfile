@@ -73,18 +73,16 @@ pipeline {
 				sh 'mvn -e javadoc:javadoc'
 			}
 			post {
-				always{ deleteDir() }
 				success{
 					script{
-
-						step([$class: 'JavadocArchiver', javadocDir:'target/site/apidocs', keepAll:false])
+						step([$class: 'JavadocArchiver', javadocDir:'target/javadpc/apidocs', keepAll:false])
 					}
-
 					echo " Documentation stage completed"
-					deleteDir()
 				}
 				failure{
 					echo " Documentation stage failed"
+				}
+				cleanup{
 					deleteDir()
 				}
 			}
