@@ -3,7 +3,7 @@ pipeline {
         label 'master'
     }
       tools {
-        maven 'Maven 3.6.1'
+        maven 'maven'
        
     }
 	environment{ COMPLIANCEENABLED = true }
