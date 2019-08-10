@@ -1,11 +1,10 @@
 pipeline {
-	 agent{
-        label 'master'
-    }
-      tools {
-        maven 'maven'
-       
-    }
+	agent{
+		label 'master'
+	}
+	tools {
+		maven 'maven'
+	}
 	environment{ COMPLIANCEENABLED = true }
 	options{
 		skipDefaultCheckout()
@@ -19,7 +18,7 @@ pipeline {
 				stash includes: 'target/*.jar', name: 'artifact'
 			}
 			post {
-				
+
 				success{ echo " Build stage completed" }
 				failure{ echo " Build stage failed" }
 			}
@@ -32,7 +31,6 @@ pipeline {
 				sh 'mvn test'
 			}
 			post {
-				always{ deleteDir() }
 				success{
 					script{
 
@@ -41,11 +39,9 @@ pipeline {
 					}
 
 					echo " Unit Test stage completed"
-					
 				}
 				failure{
 					echo " Unit Test stage failed"
-					
 				}
 			}
 		}
