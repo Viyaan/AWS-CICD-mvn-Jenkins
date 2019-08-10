@@ -75,7 +75,7 @@ pipeline {
 			post {
 				success{
 					script{
-						step([$class: 'JavadocArchiver', javadocDir:'target/javadpc/apidocs', keepAll:false])
+						step([$class: 'JavadocArchiver', javadocDir:'target/javadoc/apidocs', keepAll:false])
 					}
 					echo " Documentation stage completed"
 				}
