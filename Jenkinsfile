@@ -120,7 +120,7 @@ pipeline {
 		success{
 			echo ' Pipeline successfull'
 		}
-		failure{f
+		failure{
 			echo ' Pipeline Failed'
 		}
 	}
