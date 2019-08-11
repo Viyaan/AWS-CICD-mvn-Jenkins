@@ -114,5 +114,15 @@ pipeline {
 			}
 		}
 	}
+
+	post{
+
+		success{
+			echo ' Pipeline successfull'
+		}
+		failure{f
+			echo ' Pipeline Failed'
+		}
+	}
 }
 
