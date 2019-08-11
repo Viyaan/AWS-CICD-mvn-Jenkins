@@ -94,10 +94,11 @@ pipeline {
 
 			environment { DOCKER_CREDS =credentials('docker')}
 			steps{
-
+				echo $DOCKER_CREDS_USR
+				echo $DOCKER_CREDS_PWD
 				sh 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
-				sh 'docker build -t primesentinel/sample-rest-api:latest'
-				sh 'docker push primesentinel/sample-rest-api:latest'
+				sh 'docker build -t viyaandocker/sample-spring-boot:latest'
+				sh 'docker push viyaandocker/sample-spring-boot:latest'
 			}
 			post {
 				success{
