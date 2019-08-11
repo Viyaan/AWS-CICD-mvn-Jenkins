@@ -107,6 +107,9 @@ pipeline {
 				failure{
 					echo " Docker stage failed"
 				}
+				cleanup{
+					deleteDir()
+				}
 			}
 		}
 	}
