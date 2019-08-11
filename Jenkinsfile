@@ -96,7 +96,7 @@ pipeline {
 			steps{
 
 				sh 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
-				sh 'docker build -t viyaandocker/sample-spring-boot:latest'
+				sh 'docker build -t viyaandocker/sample-spring-boot:latest .'
 				sh 'docker push viyaandocker/sample-spring-boot:latest'
 			}
 			post {
