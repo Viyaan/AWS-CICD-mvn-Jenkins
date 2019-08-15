@@ -4,9 +4,7 @@ Demonstrate Jenkins Pipeline as Code
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+A step by step guide to install jenkins in EC2 Linux
 
 ```
 https://docs.aws.amazon.com/whitepapers/latest/jenkins-on-aws/installation.html
@@ -23,3 +21,12 @@ Install java 8
 ```
 sudo yum install java-1.8.0
 ```
+
+Install Git
+
+```
+sudo yum install git -y
+```
+Follow the below link
+
+https://scriptcrunch.com/git-clone-error-java-io-ioexception/
