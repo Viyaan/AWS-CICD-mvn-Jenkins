@@ -30,3 +30,13 @@ sudo yum install git -y
 Follow the below link
 
 https://scriptcrunch.com/git-clone-error-java-io-ioexception/
+
+Install Docker
+
+```
+sudo yum -y install docker
+sudo service docker start
+sudo chmod 666 /var/run/docker.sock
+```
+
+
