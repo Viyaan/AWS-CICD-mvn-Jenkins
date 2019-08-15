@@ -87,6 +87,38 @@ pipeline {
 		}
 
 
+		stage("CxSAST Scan") {
+			steps {
+				step([$class: 'CxScanBuilder',
+					 comment: '',
+					 credentialsId: '',
+					 excludeFolders: '',
+					 excludeOpenSourceFolders: '',
+					 exclusionsSetting: 'global',
+					 failBuildOnNewResults: true,
+					 failBuildOnNewSeverity: 'HIGH',
+					 filterPattern: '',
+					 fullScanCycle: 10,
+					 generatePdfReport: true,
+					 includeOpenSourceFolders: '',
+					 osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz',
+					 osaInstallBeforeScan: false,
+					 password: '{AQAAABAAAAAQrdI0oA8y13zZc0dnrxgozGpjQrXFfJM4jrsyF5EaI3w=}',
+					 projectName: 'test',
+					 sastEnabled: true,
+					 serverUrl: '',
+					 sourceEncoding: '1',
+					 username: '',
+					 vulnerabilityThresholdResult: 'FAILURE',
+					 waitForResultsEnabled: true])
+			}
+			post{
+				success{echo 'SAST check Completed'}
+				failure{echo 'SAST check Failed'}
+			}
+		}
+
+
 
 		stage('Documentation'){
 
