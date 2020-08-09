@@ -120,6 +120,18 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+    <repository>
+        <id>bytenovus--code-repo-maven</id>
+        <url>https://bytenovus-130738026255.d.codeartifact.us-east-1.amazonaws.com/maven/code-repo-maven/</url>
+        <name>code-repo-maven</name>
+    </repository>
+	 <snapshotRepository>
+        <id>bytenovus--code-repo-maven-SNAPSHOT</id>
+        <url>https://bytenovus-130738026255.d.codeartifact.us-east-1.amazonaws.com/maven/code-repo-maven-SNAPSHOT/</url>
+        <name>code-repo-maven</name>
+    </snapshotRepository>
+</distributionManagement>
 
 
 </project>
