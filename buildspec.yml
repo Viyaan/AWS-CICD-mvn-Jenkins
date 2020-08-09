@@ -5,7 +5,6 @@ env:
     IMAGE_TAG: "latest"
     AWS_DEFAULT_REGION: "us-east-1"
     AWS_ACCOUNT_ID: "130738026255"
-    CODECOV_TOKEN: "22202c95-2fd4-4797-ad98-f1b1c18dc7bb"
   parameter-store:
     CODECOV_TOKEN: /CodeBuild/CODECOV_TOKEN  
 
