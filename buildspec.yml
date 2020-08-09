@@ -1,9 +1,9 @@
 version: 0.2
 env:
   variables:
-    IMAGE_REPO_NAME: "mvn-boot-repo",
-    IMAGE_TAG:"latest",
-    AWS_DEFAULT_REGION:"us-east-1",
+    IMAGE_REPO_NAME: "mvn-boot-repo"
+    IMAGE_TAG:"latest"
+    AWS_DEFAULT_REGION:"us-east-1"
     AWS_ACCOUNT_ID:"130738026255"
 
 phases:
