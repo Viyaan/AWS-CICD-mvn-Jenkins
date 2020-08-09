@@ -39,7 +39,7 @@ reports:
     discard-paths: no
   reportGroupJunitJson:
     files:
-      - 'target/surefire-reports/*.xml'
+      - 'target/jacoco-ut/jacoco.xml'
     discard-paths: yes
     file-format: JunitXml # default is JunitXml      
 artifacts:
