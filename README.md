@@ -22,6 +22,12 @@ Install java 8
 sudo yum install java-1.8.0-openjdk-devel
 ```
 
+Install maven (optional)
+
+```
+https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connect-prerq.html
+```
+
 Install Git
 
 ```
