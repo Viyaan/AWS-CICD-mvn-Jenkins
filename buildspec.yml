@@ -1,4 +1,10 @@
 version: 0.2
+env:
+  variables:
+    IMAGE_REPO_NAME: "mvn-boot-repo"
+    IMAGE_TAG:"latest"
+    AWS_DEFAULT_REGION:"us-east-1"
+    AWS_ACCOUNT_ID:"130738026255"
 
 phases:
   pre_build:
@@ -8,7 +14,7 @@ phases:
   build:
     commands:
       - echo Run Test Case
-      - mvn test    
+      - mvn install    
       - echo Build started on 'date'
       - echo Building the Docker image...  $IMAGE_REPO_NAME        
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
