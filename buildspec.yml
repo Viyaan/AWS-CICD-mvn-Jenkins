@@ -37,7 +37,7 @@ reports:
       - "**/*"
     base-directory: 'target/tests/reports'
     discard-paths: no
-  reportGroupCucumberJson:
+  reportGroupJunitJson:
     files:
       - 'target/surefire-reports/*.xml'
     discard-paths: yes
