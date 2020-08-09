@@ -16,6 +16,12 @@
          <url>https://bytenovus-130738026255.d.codeartifact.us-east-1.amazonaws.com/maven/code-repo-maven-SNAPSHOT/</url>
          <mirrorOf>*</mirrorOf>
       </mirror>
+      <mirror>
+         <id>bytenovus--maven-central-store</id>
+         <name>bytenovus--maven-central-store</name>
+         <url>https://bytenovus-130738026255.d.codeartifact.us-east-1.amazonaws.com/maven/maven-central-store/</url>
+         <mirrorOf>*</mirrorOf>
+      </mirror>
    </mirrors>
    <profiles>
       <profile>
@@ -27,6 +33,10 @@
             <repository>
                <id>bytenovus--code-repo-maven-SNAPSHOT</id>
                <url>https://bytenovus-130738026255.d.codeartifact.us-east-1.amazonaws.com/maven/code-repo-maven-SNAPSHOT/</url>
+            </repository>
+            <repository>
+               <id>bytenovus--maven-central-store</id>
+               <url>https://bytenovus-130738026255.d.codeartifact.us-east-1.amazonaws.com/maven/maven-central-store/</url>
             </repository>
          </repositories>
       </profile>
