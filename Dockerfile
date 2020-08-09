@@ -1,5 +1,5 @@
 FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
-LABEL maintainer Code Tube
+LABEL maintainer Byte Novus aka Viyaan
 COPY pom.xml /build/
 COPY src /build/src/
 WORKDIR /build/
