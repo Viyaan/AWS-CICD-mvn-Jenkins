@@ -1,19 +1,10 @@
-FROM openjdk:8-jdk-alpine
-
-# Add Maintainer Info
-LABEL maintainer="viyaan.86@gmail.com"
-
-# Add a volume pointing to /tmp
-VOLUME /tmp
-
-# Make port 8080 available to the world outside this container
-EXPOSE 3000
-
-# The application's jar file
-ARG JAR_FILE=target/*.jar
-
-# Add the application's jar to the container
-ADD ${JAR_FILE} jenkinscicd.jar
-
-# Run the jar file 
-ENTRYPOINT ["java", "-jar","/jenkinscicd.jar"]
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
+LABEL maintainer Code Tube
+COPY pom.xml /build/
+COPY src /build/src/
+WORKDIR /build/
+RUN mvn clean package
+FROM openjdk:8-jre-alpine
+WORKDIR /app
+COPY --from=MAVEN_BUILD /build/target/docker-boot-ecs-0.0.1.jar /app/
+ENTRYPOINT ["java", "-jar", "docker-boot-ecs-0.0.1.jar"]
