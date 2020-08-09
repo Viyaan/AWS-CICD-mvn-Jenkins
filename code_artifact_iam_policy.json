@@ -1,0 +1,22 @@
+{
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+         "Action":[
+            "codeartifact:*"
+         ],
+         "Effect":"Allow",
+         "Resource":"arn:aws:codeartifact:us-east-1:130738026255:repository/bytenovus/code-repo-maven-SNAPSHOT"
+      },
+      {
+         "Effect":"Allow",
+         "Action":"sts:GetServiceBearerToken",
+         "Resource":"*",
+         "Condition":{
+            "StringEquals":{
+               "sts:AWSServiceName":"codeartifact.amazonaws.com"
+            }
+         }
+      }
+   ]
+}
