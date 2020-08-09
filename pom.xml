@@ -127,9 +127,9 @@
         <name>code-repo-maven</name>
     </repository>
 	 <snapshotRepository>
-        <id>bytenovus--code-repo-maven-SNAPSHOT</id>
-        <url>https://bytenovus-130738026255.d.codeartifact.us-east-1.amazonaws.com/maven/code-repo-maven-SNAPSHOT/</url>
-        <name>code-repo-maven</name>
+		<id>bytenovus--code-repo-maven-SNAPSHOT</id>
+		<name>bytenovus--code-repo-maven-SNAPSHOT</name>
+		<url>https://bytenovus-130738026255.d.codeartifact.us-east-1.amazonaws.com/maven/code-repo-maven-SNAPSHOT/</url>
     </snapshotRepository>
 </distributionManagement>
 
