@@ -28,9 +28,11 @@ phases:
       - echo Build completed on 'date'
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - mvn -s settings.xml compile
       - echo Pushing the artifact image...
       - export CODEARTIFACT_AUTH_TOKEN='aws codeartifact get-authorization-token --domain bytenovus --domain-owner 130738026255 --query authorizationToken --output text'
       - echo $CODEARTIFACT_AUTH_TOKEN
+      - echo CODEARTIFACT_AUTH_TOKEN
       - mvn -s settings.xml deploy
       
 reports:
