@@ -6,5 +6,5 @@ WORKDIR /build/
 RUN mvn clean package
 FROM openjdk:8-jre-alpine
 WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/docker-boot-ecs-0.0.1.jar /app/
+COPY --from=MAVEN_BUILD /build/target/*.jar /app/docker-boot-ecs-0.0.1.jar
 ENTRYPOINT ["java", "-jar", "docker-boot-ecs-0.0.1.jar"]
