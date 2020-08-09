@@ -35,7 +35,6 @@ reports:
   arn:aws:codebuild:$AWS_DEFAULT_REGION:$AWS_ACCOUNT_ID:report-group/report-group-name-1:
     files:
       - "**/*"
-    base-directory: 'target/tests/reports'
     discard-paths: no
   reportGroupJunitJson:
     files:
