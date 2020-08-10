@@ -6,12 +6,18 @@
             "codeartifact:*"
          ],
          "Effect":"Allow",
-         "Resource":"arn:aws:codeartifact:us-east-1:130738026255:repository/bytenovus/code-repo-maven-SNAPSHOT"
+         "Resource":"arn:aws:codeartifact:us-east-1:130738026255:repository/bytenovus/code-repo-maven-SNAPSHOT",
+		  "Principal": {
+                "AWS": "arn:aws:iam::130738026255:root"
+            },
       },
       {
          "Effect":"Allow",
          "Action":"sts:GetServiceBearerToken",
          "Resource":"*",
+		  "Principal": {
+                "AWS": "arn:aws:iam::130738026255:root"
+            },
          "Condition":{
             "StringEquals":{
                "sts:AWSServiceName":"codeartifact.amazonaws.com"
